@@ -1,0 +1,36 @@
+<main>
+  <h1>Search for Poetry</h1>
+  <div class="search-container">
+    <input
+      type="text"
+      id="authorInput"
+      placeholder="Author"
+      [(ngModel)]="author"
+    />
+    <input
+      type="text"
+      id="titleInput"
+      placeholder="Poem Title"
+      [(ngModel)]="title"
+    />
+    <input
+      type="text"
+      id="titleInput"
+      placeholder="Line Count"
+      [(ngModel)]="lines"
+    />
+    <button (click)="search()">Search</button>
+  </div>
+  <div id="results">
+    <div *ngIf="data() as poems">
+      <div *ngFor="let poem of poems; let i = index; trackBy: trackByIndex">
+        <h2>{{ poem.title }}</h2>
+        <h3>by {{ poem.author }}</h3>
+        <div *ngFor="let line of poem.lines; let i = index; trackBy: trackByIndex">
+          {{ line }}
+        </div>
+        <hr/>
+      </div>
+    </div>
+  </div>
+</main>
